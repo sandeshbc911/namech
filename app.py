@@ -14,7 +14,7 @@ def lookup_nickname():
     session = requests.Session()
 
     # Get CSRF token
-    csrf_url = 'https://uidtopup.com/api/auth/csrf'
+    csrf_url = 'https://domain.com/api/auth/csrf'
     csrf_headers = {
         'accept': '*/*',
         'accept-language': 'en-US,en;q=0.9,id;q=0.8',
@@ -25,7 +25,7 @@ def lookup_nickname():
     csrf_token = csrf_response.json().get('csrfToken')
 
     # Login with credentials
-    login_url = 'https://uidtopup.com/api/auth/callback/credentials'
+    login_url = 'https://domain.com/api/auth/callback/credentials'
     login_headers = {
         'accept': '*/*',
         'accept-language': 'en-US,en;q=0.9,id;q=0.8',
@@ -34,8 +34,8 @@ def lookup_nickname():
         'referer': 'https://uidtopup.com/login'
     }
     login_data = {
-        'email': 'merokuku8@gmail.com',
-        'password': 'GDC3@tVeNwAeJ',
+        'email': 'emailhere',
+        'password': 'password_here',
         'redirect': 'false',
         'callbackUrl': '/',
         'csrfToken': csrf_token,
@@ -44,7 +44,7 @@ def lookup_nickname():
     session.post(login_url, headers=login_headers, data=login_data)
 
     # Nickname lookup
-    nickname_url = f'https://uidtopup.com/api/data/ff-bd-nickname?uid={uid}'
+    nickname_url = f'https://domain.com/api/data/ff-bd-nickname?uid={uid}'
     nickname_headers = {
         'accept': '*/*',
         'accept-language': 'en-US,en;q=0.9,id;q=0.8',
